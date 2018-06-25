@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+</head>
+<body>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <section style="margin-top:25vh;" class="columns is-mobile">
+
+        <div class="column is-half is-offset-one-quarter">
+            <div class="panel">
+            <p class="panel-heading">Usuario</p>
+
+            <div class="panel-block"><div class="container">
+                <form action="/save" method="POST">
+                    {% if user %}
+                        <input type="hidden" name="id" value="{{ user.id }}">
+                    {% endif %}
+
+            <div class="field">
+              <p class="control has-icons-left has-icons-right">
+                <input name="email" class="input" type="email" placeholder="Email" {% if user %} value="{{ user.email }}" {% endif %} >
+                <span class="icon is-small is-left">
+                  <i class="fas fa-envelope"></i>
+                </span>
+                <span class="icon is-small is-right">
+                  <i class="fas fa-check"></i>
+                </span>
+              </p>
+            </div>
+            <div class="field">
+              <p class="control has-icons-left">
+                <input name="name" class="input" type="text" placeholder="Nombre" {% if user %} value="{{ user.name }}" {% endif %}>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-user"></i>
+                </span>
+              </p>
+            </div>
+             <div class="field">
+              <p class="control has-icons-left">
+                <input name="tel" class="input" type="tel" placeholder="Telefono" {% if user %} value="{{ user.tel }}" {% endif %}>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-phone"></i>
+                </span>
+              </p>
+            </div>
+            <div class="field">
+              <p class="control">
+                <button class="button is-primary">
+                  Guardar
+                </button>
+              </p>
+
+
+        </div>
+                </form>
+        </div></div>
+        </div>
+        </div>
+
+    </section>
+</body>
+</html>

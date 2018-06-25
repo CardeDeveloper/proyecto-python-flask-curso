@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
+</head>
+<body>
+    <section class="section">
+    <div class="container">
+        <a href="{{ url_for('new') }}" class="button is-success">
+            <span>nuevo</span>
+            <span class="icon is-small">
+                <i class="fas fa-plus"></i>
+            </span>
+        </a>
+    </div>
+
+     <div style="margin-top: 50px;" class="container">
+         <table class="table is-bordered is-fullwidth">
+             <thead>
+             <tr>
+                 <th>ID</th>
+                 <th>Nombre</th>
+                 <th>Email</th>
+                 <th>Telefono</th>
+                 <th>Acciones</th>
+             </tr>
+             </thead>
+             <tbody>
+                {% if users %}
+                    {% for user in users%}
+                        <tr>
+                         <td>{{ user.id }}</td>
+                         <td>{{ user.name}}</td>
+                         <td>{{ user.email }}</td>
+                         <td>{{ user.tel }}</td>
+                         <td>
+                             <a href="/edit/{{ user.id }}" class="button is-info is-outlined">
+                                 <span class="icon is-small">
+                                     <i class="fas fa-edit"></i>
+                                 </span>
+                             </a>
+
+                             <a href="/delete/{{ user.id }}" class="button is-danger is-outlined">
+                                 <span class="icon is-small">
+                                     <i class="fas fa-times"></i>
+                                 </span>
+                             </a>
+                         </td>
+                     </tr>
+                    {% endfor %}
+
+
+                {% endif %}
+             </tbody>
+         </table>
+     </div>
+  </section>
+<script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+</body>
+</html>
